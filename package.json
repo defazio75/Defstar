@@ -1,0 +1,16 @@
+{
+  "name": "defstar-management",
+  "private": true,
+  "version": "1.0.0",
+  "description": "DefStar Management direct booking and management site",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "14.2.5",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  }
+}
