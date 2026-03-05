@@ -1,62 +1,60 @@
-// app/contact/page.js
-export const metadata = {
-  title: "Contact | DefStar Management",
-  description: "Contact DefStar Management for bookings or management inquiries.",
-};
-
-export default function ContactPage() {
-  // Replace these with your real info:
-  const phone = "(XXX) XXX-XXXX";
-  const email = "info@defstarmanagement.com";
-
+// components/Navbar.js
+export default function Navbar() {
   return (
-    <div className="grid" style={{ gap: 16 }}>
-      <header className="card">
-        <h1>Contact</h1>
-        <p className="muted">
-          For reservations: call/text with your dates and the property name.
-          <br />
-          For owners: reach out for a management quote.
-        </p>
-      </header>
+    <header className="card" aria-label="site header">
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: 16,
+          padding: "6px 2px",
+        }}
+      >
+        {/* Brand */}
+        <a
+          href="/"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 10,
+            textDecoration: "none",
+            color: "inherit",
+          }}
+        >
+          <div
+            aria-hidden="true"
+            style={{
+              width: 34,
+              height: 34,
+              borderRadius: 12,
+              background: "rgba(15,23,32,0.06)",
+              display: "grid",
+              placeItems: "center",
+              fontWeight: 800,
+            }}
+          >
+            ★
+          </div>
+          <div style={{ lineHeight: 1.1 }}>
+            <div style={{ fontWeight: 800 }}>DefStar Management</div>
+            <div className="muted small">Tampa • St Pete • Gulf Beaches</div>
+          </div>
+        </a>
 
-      <section className="grid grid-2">
-        <div className="card">
-          <h2>Call / Text</h2>
-          <p className="muted">
-            <strong>{phone}</strong>
-          </p>
-          <p className="muted">
-            Best for quick availability checks and booking requests.
-          </p>
-          <a className="btn btn-primary" href={`tel:${phone.replace(/[^\d+]/g, "")}`}>
-            Call Now
+        {/* Nav */}
+        <nav aria-label="primary navigation" style={{ display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "flex-end" }}>
+          <a className="btn btn-ghost" href="/properties">Properties</a>
+          <a className="btn btn-ghost" href="/owners">Owner Services</a>
+          <a className="btn btn-ghost" href="/about">About</a>
+          <a className="btn btn-ghost" href="/contact">Contact</a>
+
+          <a className="btn" href="/revenue-estimate" style={{ border: "1px solid rgba(15,23,32,0.10)" }}>
+            Free Revenue Estimate
           </a>
-        </div>
-
-        <div className="card">
-          <h2>Email</h2>
-          <p className="muted">
-            <strong>{email}</strong>
-          </p>
-          <p className="muted">
-            Best for owner inquiries, longer questions, or documents.
-          </p>
-          <a className="btn" href={`mailto:${email}`}>
-            Email Us
-          </a>
-        </div>
-      </section>
-
-      <section className="card">
-        <h2>What to include</h2>
-        <ul className="muted">
-          <li>Your name + best callback number</li>
-          <li>Dates (check-in/check-out) + number of guests</li>
-          <li>Property name (or link from our Properties page)</li>
-          <li>If owner: address, bedrooms/baths, and current performance</li>
-        </ul>
-      </section>
-    </div>
+          <a className="btn btn-primary" href="tel:+15555555555">Call</a>
+        </nav>
+      </div>
+    </header>
   );
 }
