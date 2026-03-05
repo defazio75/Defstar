@@ -1,27 +1,54 @@
-// app/properties/page.js
-import PropertyCard from "../../components/PropertyCard";
-import { properties } from "../../data/properties";
-
-export const metadata = {
-  title: "Properties | DefStar Management",
-  description: "Browse properties managed by DefStar Management.",
-};
+import Navbar from "../../components/Navbar";
 
 export default function PropertiesPage() {
   return (
-    <div className="grid" style={{ gap: 16 }}>
-      <header className="card">
-        <h1>Managed Properties</h1>
-        <p className="muted">
-          Interested in booking? These are off-platform bookings: call/text or email for
-          availability, pricing, and deposit details.
-        </p>
-      </header>
+    <div className="grid" style={{ gap: 22 }}>
+      <Navbar />
 
-      <section className="grid grid-3">
-        {properties.map((p) => (
-          <PropertyCard key={p.id} property={p} />
-        ))}
+      <section className="card">
+        <h2 style={{ marginTop: 0 }}>Vacation Rentals</h2>
+        <p className="muted">
+          Browse our featured vacation rentals across Tampa Bay and St. Petersburg.
+          For availability or direct bookings, contact us directly.
+        </p>
+
+        <div className="grid grid-3" style={{ gap: 12, marginTop: 12 }}>
+          <div className="card">
+            <h4>St Pete Beach Condo</h4>
+            <p className="muted small">
+              2 Bed • 2 Bath • Sleeps 6
+            </p>
+            <a className="btn btn-ghost" href="/contact">
+              Check Availability
+            </a>
+          </div>
+
+          <div className="card">
+            <h4>Treasure Island Beach House</h4>
+            <p className="muted small">
+              3 Bed • Sleeps 8
+            </p>
+            <a className="btn btn-ghost" href="/contact">
+              Check Availability
+            </a>
+          </div>
+
+          <div className="card">
+            <h4>Downtown St Pete Apartment</h4>
+            <p className="muted small">
+              1 Bed • Sleeps 4
+            </p>
+            <a className="btn btn-ghost" href="/contact">
+              Check Availability
+            </a>
+          </div>
+        </div>
+
+        <div style={{ marginTop: 16 }}>
+          <a className="btn btn-primary" href="/contact">
+            Contact for Reservations
+          </a>
+        </div>
       </section>
     </div>
   );
