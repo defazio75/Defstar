@@ -166,7 +166,10 @@ export default function HomePage() {
 
       {/* CTA (your existing component) */}
       <CTA />
+        
+      {/* FOOTER */}
+      <Footer />
     </div>
   );
 }
-<Footer />
+
