@@ -1,60 +1,42 @@
-// components/Navbar.js
+import Link from "next/link";
+
+const navItems = [
+  { href: "/properties", label: "Properties" },
+  { href: "/owners", label: "Owner Services" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
+];
+
 export default function Navbar() {
   return (
-    <header className="card" aria-label="site header">
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          gap: 16,
-          padding: "6px 2px",
-        }}
-      >
-        {/* Brand */}
-        <a
-          href="/"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 10,
-            textDecoration: "none",
-            color: "inherit",
-          }}
-        >
-          <div
-            aria-hidden="true"
-            style={{
-              width: 34,
-              height: 34,
-              borderRadius: 12,
-              background: "rgba(15,23,32,0.06)",
-              display: "grid",
-              placeItems: "center",
-              fontWeight: 800,
-            }}
-          >
-            ★
+    <div className="container site-nav-wrap">
+      <header className="site-nav" aria-label="Primary">
+        <Link href="/" className="brand-lockup">
+          <div className="brand-mark" aria-hidden="true">
+            D★
           </div>
-          <div style={{ lineHeight: 1.1 }}>
-            <div style={{ fontWeight: 800 }}>DefStar Management</div>
-            <div className="muted small">Tampa • St Pete • Gulf Beaches</div>
+
+          <div>
+            <h1 className="brand-title">DefStar Management</h1>
+            <div className="brand-subtitle">Tampa Bay • St. Pete • Gulf Beaches</div>
           </div>
-        </a>
+        </Link>
 
-        {/* Nav */}
-        <nav aria-label="primary navigation" style={{ display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "flex-end" }}>
-          <a className="btn btn-ghost" href="/properties">Properties</a>
-          <a className="btn btn-ghost" href="/owners">Owner Services</a>
-          <a className="btn btn-ghost" href="/about">About</a>
-          <a className="btn btn-ghost" href="/contact">Contact</a>
+        <nav className="site-nav-links" aria-label="Site navigation">
+          {navItems.map((item) => (
+            <Link key={item.href} href={item.href} className="nav-link">
+              {item.label}
+            </Link>
+          ))}
 
-          <a className="btn" href="/revenue-estimate" style={{ border: "1px solid rgba(15,23,32,0.10)" }}>
+          <Link href="/revenue-estimate" className="btn btn-secondary">
             Free Revenue Estimate
+          </Link>
+          <a className="btn btn-primary" href="tel:+15555555555">
+            Call / Text
           </a>
-          <a className="btn btn-primary" href="tel:+15555555555">Call</a>
         </nav>
-      </div>
-    </header>
+      </header>
+    </div>
   );
 }
