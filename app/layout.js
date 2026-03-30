@@ -1,21 +1,24 @@
-// app/layout.js
 import "./globals.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 export const metadata = {
-  title: "DefStar Management | Short-Term & Mid-Term Rental Management",
+  title: "DefStar Management | Tampa Bay STR & Mid-Term Rental Management",
   description:
-    "DefStar Management helps owners maximize rental revenue with full-service hosting, cleaning coordination, and guest communication.",
+    "Professional short-term and mid-term rental management for Tampa Bay, St. Petersburg, and the Gulf Beaches.",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Navbar />
-        <main className="container">{children}</main>
-        <Footer />
+        <div className="site-shell">
+          <Navbar />
+          <main className="page-shell">
+            <div className="container">{children}</div>
+          </main>
+          <Footer />
+        </div>
       </body>
     </html>
   );
