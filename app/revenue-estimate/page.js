@@ -1,11 +1,9 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Navbar from "../../components/Navbar";
 
 export default function RevenueEstimatePage() {
   const [status, setStatus] = useState({ type: "", msg: "" });
-
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -20,7 +18,7 @@ export default function RevenueEstimatePage() {
     notes: "",
   });
 
-  const emailTo = "info@defstarmanagement.com"; // change if needed
+  const emailTo = "info@defstarmanagement.com";
 
   const mailtoHref = useMemo(() => {
     const subject = `FREE Revenue Estimate Request — ${form.address || "New Property"}`;
@@ -41,171 +39,154 @@ export default function RevenueEstimatePage() {
       "Sent from defstarmanagement.com",
     ];
 
-    const body = encodeURIComponent(lines.join("\n"));
-    return `mailto:${emailTo}?subject=${encodeURIComponent(subject)}&body=${body}`;
+    return `mailto:${emailTo}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
   }, [form]);
 
-  function onChange(e) {
-    const { name, value } = e.target;
-    setForm((s) => ({ ...s, [name]: value }));
+  function onChange(event) {
+    const { name, value } = event.target;
+    setForm((current) => ({ ...current, [name]: value }));
   }
 
-  function onSubmit(e) {
-    e.preventDefault();
+  function onSubmit(event) {
+    event.preventDefault();
 
-    // Basic validation
     if (!form.name || !form.email || !form.phone || !form.address) {
       setStatus({
         type: "error",
-        msg: "Please fill in Name, Email, Phone, and Property Address.",
+        msg: "Please fill in Name, Email, Phone, and Property Address before sending.",
       });
       return;
     }
 
     setStatus({
       type: "success",
-      msg: "Opening your email app with the pre-filled request…",
+      msg: "Opening your email app with the pre-filled estimate request.",
     });
 
     window.location.href = mailtoHref;
   }
 
   return (
-    <div className="grid" style={{ gap: 22 }}>
-      <Navbar />
-
-      <section className="card">
-        <h2 style={{ marginTop: 0 }}>Free Revenue Estimate</h2>
-        <p className="muted">
-          Send us your property details and we’ll estimate revenue, pricing strategy, and what we’d
-          do to optimize performance in Tampa Bay / St. Pete.
-        </p>
-
-        {status.msg ? (
+    <div className="page-stack">
+      <section className="grid grid-2">
+        <div className="card card-dark">
           <div
-            className="card"
+            className="eyebrow"
             style={{
-              marginTop: 12,
-              border: "1px solid rgba(15,23,32,0.10)",
+              background: "rgba(255,255,255,0.12)",
+              color: "#eef7fb",
+              borderColor: "rgba(255,255,255,0.12)",
             }}
           >
-            <strong>{status.type === "error" ? "Fix needed:" : "Ready:"}</strong>
-            <div className="muted small">{status.msg}</div>
+            Free estimate
           </div>
-        ) : null}
+          <h2 className="section-title" style={{ marginTop: 18 }}>
+            Get a clean, owner-friendly revenue estimate for your property.
+          </h2>
+          <p className="lead" style={{ marginTop: 16 }}>
+            Send us the basics and we’ll review your home, pricing potential, and where it could fit in the market.
+          </p>
 
-        <form onSubmit={onSubmit} style={{ marginTop: 14 }}>
-          <div className="grid grid-3" style={{ gap: 12 }}>
-            <Field label="Name *">
-              <input name="name" value={form.name} onChange={onChange} placeholder="Dave DeFazio" />
-            </Field>
-
-            <Field label="Email *">
-              <input
-                name="email"
-                value={form.email}
-                onChange={onChange}
-                placeholder="you@email.com"
-                type="email"
-              />
-            </Field>
-
-            <Field label="Phone *">
-              <input
-                name="phone"
-                value={form.phone}
-                onChange={onChange}
-                placeholder="(555) 555-5555"
-              />
-            </Field>
-
-            <Field label="Property Address *">
-              <input
-                name="address"
-                value={form.address}
-                onChange={onChange}
-                placeholder="123 Beach Ave"
-              />
-            </Field>
-
-            <Field label="City">
-              <input name="city" value={form.city} onChange={onChange} placeholder="St. Pete" />
-            </Field>
-
-            <Field label="State">
-              <input name="state" value={form.state} onChange={onChange} placeholder="FL" />
-            </Field>
-
-            <Field label="ZIP">
-              <input name="zip" value={form.zip} onChange={onChange} placeholder="33706" />
-            </Field>
-
-            <Field label="Bedrooms">
-              <input
-                name="bedrooms"
-                value={form.bedrooms}
-                onChange={onChange}
-                placeholder="2"
-              />
-            </Field>
-
-            <Field label="Bathrooms">
-              <input
-                name="bathrooms"
-                value={form.bathrooms}
-                onChange={onChange}
-                placeholder="2"
-              />
-            </Field>
-
-            <Field label="Sleeps">
-              <input name="sleeps" value={form.sleeps} onChange={onChange} placeholder="6" />
-            </Field>
+          <div className="highlight-list" style={{ marginTop: 24 }}>
+            <div className="highlight-item">
+              <div className="check-badge">✓</div>
+              <div>
+                <strong>Revenue potential</strong>
+                <div className="small muted">A realistic estimate, not inflated fluff.</div>
+              </div>
+            </div>
+            <div className="highlight-item">
+              <div className="check-badge">✓</div>
+              <div>
+                <strong>Positioning ideas</strong>
+                <div className="small muted">How the property could be presented more effectively.</div>
+              </div>
+            </div>
+            <div className="highlight-item">
+              <div className="check-badge">✓</div>
+              <div>
+                <strong>Next-step recommendations</strong>
+                <div className="small muted">Useful whether you hire DefStar or not.</div>
+              </div>
+            </div>
           </div>
+        </div>
 
-          <div style={{ marginTop: 12 }}>
-            <Field label="Notes (optional)">
-              <textarea
-                name="notes"
-                value={form.notes}
-                onChange={onChange}
-                placeholder="Anything we should know? (HOA restrictions, parking, views, pool, etc.)"
-                rows={5}
-              />
-            </Field>
-          </div>
+        <section className="card">
+          <h3 style={{ marginTop: 0, fontSize: "1.75rem" }}>Property details</h3>
+          <p className="section-copy" style={{ marginTop: 10 }}>
+            This form opens your email app with a pre-filled request. It keeps the site simple while still making owner outreach easy.
+          </p>
 
-          <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 14 }}>
-            <button className="btn btn-primary" type="submit">
-              Send Request
-            </button>
+          {status.msg ? (
+            <div className={`notice ${status.type}`} style={{ marginTop: 18 }}>
+              <strong>{status.type === "error" ? "Fix needed" : "Ready to send"}</strong>
+              <div className="small muted">{status.msg}</div>
+            </div>
+          ) : null}
 
-            <a className="btn btn-ghost" href={mailtoHref}>
-              Email Instead
-            </a>
+          <form onSubmit={onSubmit} style={{ marginTop: 18 }}>
+            <div className="form-grid-3">
+              <Field label="Name *">
+                <input name="name" value={form.name} onChange={onChange} placeholder="Dave DeFazio" />
+              </Field>
+              <Field label="Email *">
+                <input name="email" value={form.email} onChange={onChange} type="email" placeholder="you@email.com" />
+              </Field>
+              <Field label="Phone *">
+                <input name="phone" value={form.phone} onChange={onChange} placeholder="(555) 555-5555" />
+              </Field>
+            </div>
 
-            <a className="btn" href="tel:+15555555555" style={{ border: "1px solid rgba(15,23,32,0.10)" }}>
-              Call
-            </a>
-          </div>
+            <div className="form-grid-3" style={{ marginTop: 14 }}>
+              <Field label="Property Address *">
+                <input name="address" value={form.address} onChange={onChange} placeholder="123 Beach Ave" />
+              </Field>
+              <Field label="City">
+                <input name="city" value={form.city} onChange={onChange} placeholder="St. Petersburg" />
+              </Field>
+              <Field label="State">
+                <input name="state" value={form.state} onChange={onChange} placeholder="FL" />
+              </Field>
+            </div>
 
-          <div className="muted small" style={{ marginTop: 10 }}>
-            This form opens your email app with a pre-filled message (fast + reliable while we keep
-            the site simple). Later we can swap this for an on-site submit + email delivery.
-          </div>
-        </form>
+            <div className="form-grid-3" style={{ marginTop: 14 }}>
+              <Field label="ZIP">
+                <input name="zip" value={form.zip} onChange={onChange} placeholder="33706" />
+              </Field>
+              <Field label="Bedrooms">
+                <input name="bedrooms" value={form.bedrooms} onChange={onChange} placeholder="2" />
+              </Field>
+              <Field label="Bathrooms">
+                <input name="bathrooms" value={form.bathrooms} onChange={onChange} placeholder="2" />
+              </Field>
+            </div>
+
+            <div className="form-grid" style={{ marginTop: 14 }}>
+              <Field label="Sleeps">
+                <input name="sleeps" value={form.sleeps} onChange={onChange} placeholder="6" />
+              </Field>
+              <div className="field" style={{ alignSelf: "end" }}>
+                <span>Prefer email?</span>
+                <a className="btn btn-secondary" href={mailtoHref}>Open email app</a>
+              </div>
+            </div>
+
+            <div style={{ marginTop: 14 }}>
+              <Field label="Notes (optional)">
+                <textarea
+                  name="notes"
+                  value={form.notes}
+                  onChange={onChange}
+                  placeholder="HOA rules, parking, pool, water views, recent upgrades, goals for the property, or anything else helpful."
+                />
+              </Field>
+            </div>
+
+            <div className="btn-row" style={{ marginTop: 18 }}>
+              <button className="btn btn-primary" type="submit">Send Request</button>
+              <a className="btn btn-ghost" href="tel:+15555555555">Call Instead</a>
+            </div>
+          </form>
+        </section>
       </section>
-    </div>
-  );
-}
-
-function Field({ label, children }) {
-  return (
-    <label style={{ display: "grid", gap: 6 }}>
-      <div className="muted small">
-        <strong>{label}</strong>
-      </div>
-      {children}
-    </label>
-  );
-}
