@@ -1,85 +1,54 @@
+import Link from "next/link";
+
 export default function Footer() {
   return (
-    <footer
-      className="card"
-      style={{
-        marginTop: 30,
-        borderTop: "1px solid rgba(15,23,32,0.08)",
-      }}
-    >
-      <div
-        className="grid grid-3"
-        style={{
-          gap: 20,
-          paddingTop: 10,
-        }}
-      >
-        {/* Brand */}
-        <div>
-          <h3 style={{ marginTop: 0 }}>DefStar Management</h3>
+    <footer className="footer-wrap">
+      <div className="container">
+        <div className="card footer-card">
+          <div className="footer-grid">
+            <div>
+              <div className="eyebrow">DefStar Management</div>
+              <h3 className="section-title" style={{ marginTop: 18, fontSize: "2rem" }}>
+                Management that feels polished, local, and dependable.
+              </h3>
+              <p className="section-copy" style={{ marginTop: 14 }}>
+                Short-term and mid-term rental management for Tampa Bay owners who want
+                stronger presentation, smoother operations, and a better guest experience.
+              </p>
+            </div>
 
-          <p className="muted small">
-            Vacation rental and short-term rental management
-            serving Tampa Bay and St. Petersburg.
-          </p>
+            <div>
+              <h4 style={{ marginTop: 0, marginBottom: 14 }}>Quick Links</h4>
+              <div className="footer-links">
+                <Link href="/">Home</Link>
+                <Link href="/properties">Properties</Link>
+                <Link href="/owners">Owner Services</Link>
+                <Link href="/revenue-estimate">Revenue Estimate</Link>
+                <Link href="/about">About</Link>
+                <Link href="/contact">Contact</Link>
+              </div>
+            </div>
 
-          <p className="muted small">
-            Hospitality-focused hosting designed to maximize
-            owner revenue and deliver exceptional guest stays.
-          </p>
-        </div>
+            <div>
+              <h4 style={{ marginTop: 0, marginBottom: 14 }}>Contact</h4>
+              <div className="footer-links">
+                <span>Tampa • St. Petersburg • Beaches</span>
+                <a href="tel:+15555555555">Call / Text: (555) 555-5555</a>
+                <a href="mailto:info@defstarmanagement.com">info@defstarmanagement.com</a>
+              </div>
 
-        {/* Navigation */}
-        <div>
-          <h4 style={{ marginTop: 0 }}>Quick Links</h4>
-
-          <div style={{ display: "grid", gap: 6 }}>
-            <a href="/">Home</a>
-            <a href="/properties">Vacation Rentals</a>
-            <a href="/owners">Owner Services</a>
-            <a href="/revenue-estimate">Free Revenue Estimate</a>
-            <a href="/about">About</a>
-            <a href="/contact">Contact</a>
+              <div className="btn-row" style={{ marginTop: 18 }}>
+                <Link href="/revenue-estimate" className="btn btn-primary">
+                  Get Free Revenue Estimate
+                </Link>
+              </div>
+            </div>
           </div>
-        </div>
 
-        {/* Contact */}
-        <div>
-          <h4 style={{ marginTop: 0 }}>Contact</h4>
-
-          <div className="muted small" style={{ display: "grid", gap: 6 }}>
-            <div>Tampa Bay • St Petersburg • Gulf Beaches</div>
-
-            <a href="tel:+15555555555">Call / Text</a>
-
-            <a href="mailto:info@defstarmanagement.com">
-              info@defstarmanagement.com
-            </a>
-
-            <a href="/revenue-estimate" className="btn btn-primary" style={{ marginTop: 6 }}>
-              Free Revenue Estimate
-            </a>
+          <div className="footer-bottom">
+            <div>© {new Date().getFullYear()} DefStar Management</div>
+            <div>Hospitality-first vacation rental management in Tampa Bay</div>
           </div>
-        </div>
-      </div>
-
-      {/* Bottom bar */}
-      <div
-        style={{
-          marginTop: 20,
-          paddingTop: 12,
-          borderTop: "1px solid rgba(15,23,32,0.06)",
-          display: "flex",
-          justifyContent: "space-between",
-          flexWrap: "wrap",
-          gap: 8,
-        }}
-        className="muted small"
-      >
-        <div>© {new Date().getFullYear()} DefStar Management</div>
-
-        <div>
-          Tampa Bay Vacation Rental Management
         </div>
       </div>
     </footer>
