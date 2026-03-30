@@ -9,7 +9,7 @@ export default function Footer() {
             <div>
               <div className="eyebrow">DefStar Management</div>
               <h3 className="section-title" style={{ marginTop: 18, fontSize: "2rem" }}>
-                Management that feels polished, local, and dependable.
+                Boutique-feel rental management for serious owners.
               </h3>
               <p className="section-copy" style={{ marginTop: 14 }}>
                 Short-term and mid-term rental management for Tampa Bay owners who want
