@@ -39,7 +39,9 @@ export default function RevenueEstimatePage() {
       "Sent from defstarmanagement.com",
     ];
 
-    return `mailto:${emailTo}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
+    return `mailto:${emailTo}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
+      lines.join("\n")
+    )}`;
   }, [form]);
 
   function onChange(event) {
@@ -80,11 +82,14 @@ export default function RevenueEstimatePage() {
           >
             Free estimate
           </div>
+
           <h2 className="section-title" style={{ marginTop: 18 }}>
             Get a clean, owner-friendly revenue estimate for your property.
           </h2>
+
           <p className="lead" style={{ marginTop: 16 }}>
-            Send us the basics and we’ll review your home, pricing potential, and where it could fit in the market.
+            Send us the basics and we’ll review your home, pricing potential, and where it could fit
+            in the market.
           </p>
 
           <div className="highlight-list" style={{ marginTop: 24 }}>
@@ -95,13 +100,17 @@ export default function RevenueEstimatePage() {
                 <div className="small muted">A realistic estimate, not inflated fluff.</div>
               </div>
             </div>
+
             <div className="highlight-item">
               <div className="check-badge">✓</div>
               <div>
                 <strong>Positioning ideas</strong>
-                <div className="small muted">How the property could be presented more effectively.</div>
+                <div className="small muted">
+                  How the property could be presented more effectively.
+                </div>
               </div>
             </div>
+
             <div className="highlight-item">
               <div className="check-badge">✓</div>
               <div>
@@ -114,8 +123,10 @@ export default function RevenueEstimatePage() {
 
         <section className="card">
           <h3 style={{ marginTop: 0, fontSize: "1.75rem" }}>Property details</h3>
+
           <p className="section-copy" style={{ marginTop: 10 }}>
-            This form opens your email app with a pre-filled request. It keeps the site simple while still making owner outreach easy.
+            This form opens your email app with a pre-filled request. It keeps the site simple while
+            still making owner outreach easy.
           </p>
 
           {status.msg ? (
@@ -128,47 +139,107 @@ export default function RevenueEstimatePage() {
           <form onSubmit={onSubmit} style={{ marginTop: 18 }}>
             <div className="form-grid-3">
               <Field label="Name *">
-                <input name="name" value={form.name} onChange={onChange} placeholder="Dave DeFazio" />
+                <input
+                  name="name"
+                  value={form.name}
+                  onChange={onChange}
+                  placeholder="Dave DeFazio"
+                />
               </Field>
+
               <Field label="Email *">
-                <input name="email" value={form.email} onChange={onChange} type="email" placeholder="you@email.com" />
+                <input
+                  name="email"
+                  value={form.email}
+                  onChange={onChange}
+                  type="email"
+                  placeholder="you@email.com"
+                />
               </Field>
+
               <Field label="Phone *">
-                <input name="phone" value={form.phone} onChange={onChange} placeholder="(555) 555-5555" />
+                <input
+                  name="phone"
+                  value={form.phone}
+                  onChange={onChange}
+                  placeholder="(555) 555-5555"
+                />
               </Field>
             </div>
 
             <div className="form-grid-3" style={{ marginTop: 14 }}>
               <Field label="Property Address *">
-                <input name="address" value={form.address} onChange={onChange} placeholder="123 Beach Ave" />
+                <input
+                  name="address"
+                  value={form.address}
+                  onChange={onChange}
+                  placeholder="123 Beach Ave"
+                />
               </Field>
+
               <Field label="City">
-                <input name="city" value={form.city} onChange={onChange} placeholder="St. Petersburg" />
+                <input
+                  name="city"
+                  value={form.city}
+                  onChange={onChange}
+                  placeholder="St. Petersburg"
+                />
               </Field>
+
               <Field label="State">
-                <input name="state" value={form.state} onChange={onChange} placeholder="FL" />
+                <input
+                  name="state"
+                  value={form.state}
+                  onChange={onChange}
+                  placeholder="FL"
+                />
               </Field>
             </div>
 
             <div className="form-grid-3" style={{ marginTop: 14 }}>
               <Field label="ZIP">
-                <input name="zip" value={form.zip} onChange={onChange} placeholder="33706" />
+                <input
+                  name="zip"
+                  value={form.zip}
+                  onChange={onChange}
+                  placeholder="33706"
+                />
               </Field>
+
               <Field label="Bedrooms">
-                <input name="bedrooms" value={form.bedrooms} onChange={onChange} placeholder="2" />
+                <input
+                  name="bedrooms"
+                  value={form.bedrooms}
+                  onChange={onChange}
+                  placeholder="2"
+                />
               </Field>
+
               <Field label="Bathrooms">
-                <input name="bathrooms" value={form.bathrooms} onChange={onChange} placeholder="2" />
+                <input
+                  name="bathrooms"
+                  value={form.bathrooms}
+                  onChange={onChange}
+                  placeholder="2"
+                />
               </Field>
             </div>
 
             <div className="form-grid" style={{ marginTop: 14 }}>
               <Field label="Sleeps">
-                <input name="sleeps" value={form.sleeps} onChange={onChange} placeholder="6" />
+                <input
+                  name="sleeps"
+                  value={form.sleeps}
+                  onChange={onChange}
+                  placeholder="6"
+                />
               </Field>
+
               <div className="field" style={{ alignSelf: "end" }}>
                 <span>Prefer email?</span>
-                <a className="btn btn-secondary" href={mailtoHref}>Open email app</a>
+                <a className="btn btn-secondary" href={mailtoHref}>
+                  Open email app
+                </a>
               </div>
             </div>
 
@@ -184,9 +255,25 @@ export default function RevenueEstimatePage() {
             </div>
 
             <div className="btn-row" style={{ marginTop: 18 }}>
-              <button className="btn btn-primary" type="submit">Send Request</button>
-              <a className="btn btn-ghost" href="tel:+15555555555">Call Instead</a>
+              <button className="btn btn-primary" type="submit">
+                Send Request
+              </button>
+              <a className="btn btn-ghost" href="tel:+15555555555">
+                Call Instead
+              </a>
             </div>
           </form>
         </section>
       </section>
+    </div>
+  );
+}
+
+function Field({ label, children }) {
+  return (
+    <label className="field">
+      <span>{label}</span>
+      {children}
+    </label>
+  );
+}
