@@ -1,67 +1,95 @@
-import Navbar from "../../components/Navbar";
+import Link from "next/link";
 
 export default function AboutPage() {
   return (
-    <div className="grid" style={{ gap: 22 }}>
-      <Navbar />
-
+    <div className="page-stack">
       <section className="card">
-        <h2 style={{ marginTop: 0 }}>About DefStar Management</h2>
-        <p className="muted">
-          DefStar is a Tampa Bay vacation rental management company built around one idea:
-          <strong> treat every stay like hospitality</strong> — and protect the asset like an owner.
+        <div className="eyebrow">About DefStar</div>
+        <h2 className="section-title" style={{ marginTop: 18 }}>
+          A local management company built around presentation, hospitality, and operational discipline.
+        </h2>
+        <p className="lead" style={{ maxWidth: 820, marginTop: 16 }}>
+          DefStar is designed for owners who want their property managed like a real hospitality asset,
+          not just another listing on autopilot.
         </p>
+      </section>
 
-        <div className="grid grid-3" style={{ gap: 12, marginTop: 12 }}>
-          <div className="card">
-            <h4 style={{ marginTop: 0 }}>Hospitality-first</h4>
-            <p className="muted small">
-              Guest experience drives reviews, reviews drive ranking, ranking drives revenue. We
-              prioritize response time, clarity, and smooth stays.
-            </p>
-          </div>
+      <section className="grid grid-3">
+        <article className="card info-card">
+          <div className="icon-badge" aria-hidden="true">✦</div>
+          <h3>Hospitality-first</h3>
+          <p className="lead">
+            Better guest communication drives better reviews, stronger trust, and a cleaner brand presence.
+          </p>
+        </article>
 
-          <div className="card">
-            <h4 style={{ marginTop: 0 }}>Revenue-focused</h4>
-            <p className="muted small">
-              Dynamic pricing, listing optimization, and positioning by neighborhood — not “set it
-              and forget it.”
-            </p>
-          </div>
+        <article className="card info-card">
+          <div className="icon-badge" aria-hidden="true">↗</div>
+          <h3>Revenue-minded</h3>
+          <p className="lead">
+            Pricing, positioning, and listing presentation are handled with a performance mindset.
+          </p>
+        </article>
 
-          <div className="card">
-            <h4 style={{ marginTop: 0 }}>Local operations</h4>
-            <p className="muted small">
-              Reliable turnovers, inspections, and maintenance coordination with trusted local
-              partners in Tampa Bay.
-            </p>
+        <article className="card info-card">
+          <div className="icon-badge" aria-hidden="true">⌂</div>
+          <h3>Local execution</h3>
+          <p className="lead">
+            Reliable turnovers, inspections, and maintenance coordination grounded in the Tampa Bay market.
+          </p>
+        </article>
+      </section>
+
+      <section className="highlight-grid">
+        <div className="card">
+          <div className="eyebrow">What we manage</div>
+          <h2 className="section-title" style={{ marginTop: 18 }}>
+            Flexible enough for vacation stays and longer furnished demand.
+          </h2>
+          <div className="highlight-list" style={{ marginTop: 18 }}>
+            <div className="highlight-item">
+              <div className="check-badge">✓</div>
+              <div>
+                <strong>Short-term rentals</strong>
+                <div className="small muted">
+                  1–30 night stays with full-service guest and turnover coordination.
+                </div>
+              </div>
+            </div>
+            <div className="highlight-item">
+              <div className="check-badge">✓</div>
+              <div>
+                <strong>Mid-term rentals</strong>
+                <div className="small muted">
+                  30+ day stays for relocation, corporate, seasonal, and travel-professional demand.
+                </div>
+              </div>
+            </div>
+            <div className="highlight-item">
+              <div className="check-badge">✓</div>
+              <div>
+                <strong>Owner communication and reporting</strong>
+                <div className="small muted">
+                  Clear updates that help owners understand revenue, operations, and next actions.
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="card" style={{ marginTop: 12 }}>
-          <h3 style={{ marginTop: 0 }}>What we manage</h3>
-          <ul className="muted" style={{ marginTop: 6 }}>
-            <li>Short-term rentals (1–30 nights)</li>
-            <li>Mid-term rentals (30+ nights: corporate, travel nurse, relocation)</li>
-            <li>Owner messaging, reporting, and property care</li>
-          </ul>
-
-          <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 10 }}>
-            <a className="btn btn-primary" href="/revenue-estimate">
-              Free Revenue Estimate
-            </a>
-            <a className="btn btn-ghost" href="/owners">
+        <div className="card card-dark">
+          <h3 style={{ marginTop: 0, fontSize: "1.6rem" }}>The goal</h3>
+          <p className="lead" style={{ marginTop: 12 }}>
+            Make the property feel more premium online, more reliable operationally, and easier for the owner to hold long term.
+          </p>
+          <div className="btn-row" style={{ marginTop: 24 }}>
+            <Link href="/owners" className="btn btn-gold">
               Owner Services
-            </a>
-            <a className="btn" style={{ border: "1px solid rgba(15,23,32,0.10)" }} href="/properties">
-              View Properties
-            </a>
+            </Link>
+            <Link href="/revenue-estimate" className="btn btn-secondary">
+              Free Revenue Estimate
+            </Link>
           </div>
-        </div>
-
-        <div className="muted small" style={{ marginTop: 12 }}>
-          Want this page to sound more “luxury” like that reference site, or more “local + hands-on”?
-          Either is fine — we can tune tone once your first few listings are live.
         </div>
       </section>
     </div>
