@@ -1,175 +1,214 @@
-// app/page.js
-import Navbar from "../components/Navbar";
+import Link from "next/link";
 import FeaturedProperties from "../components/FeaturedProperties";
 import CTA from "../components/CTA";
-import Footer from "../components/Footer";
+
+const services = [
+  {
+    icon: "✦",
+    title: "STR Management",
+    copy:
+      "Listing setup, dynamic pricing, guest messaging, cleaning coordination, inspections, and day-to-day issue resolution.",
+    note: "20% of revenue • cleaning and maintenance billed separately",
+  },
+  {
+    icon: "◷",
+    title: "Mid-Term Management",
+    copy:
+      "30+ day rentals for corporate, relocation, travel nurse, and seasonal demand with polished communication and smoother turnover planning.",
+    note: "10% of revenue • cleaning and maintenance billed separately",
+  },
+  {
+    icon: "✓",
+    title: "Owner Reporting",
+    copy:
+      "Simple monthly reporting focused on revenue, occupancy, reviews, expenses, and what we are doing next to improve performance.",
+    note: "Clear, owner-friendly updates",
+  },
+];
+
+const process = [
+  {
+    title: "1. Audit + strategy",
+    copy: "We assess the home, positioning, and guest appeal, then outline upgrades, pricing direction, and launch recommendations.",
+  },
+  {
+    title: "2. Launch + operate",
+    copy: "We manage listings, messaging, turnovers, maintenance coordination, and day-to-day hospitality execution.",
+  },
+  {
+    title: "3. Refine monthly",
+    copy: "We review results, adjust pricing, watch reviews, and keep the property sharp so performance improves over time.",
+  },
+];
+
+const reasons = [
+  "Hospitality-first guest communication that protects reviews",
+  "A sharper brand presentation instead of a generic management feel",
+  "Transparent owner reporting and clearly itemized expenses",
+  "Local market focus across Tampa Bay, St. Pete, and the beaches",
+];
 
 export default function HomePage() {
   return (
-    <div className="grid" style={{ gap: 22 }}>
-      <Navbar />
+    <div className="page-stack">
+      <section className="hero card">
+        <div className="hero-copy">
+          <div className="eyebrow">Tampa Bay STR & Mid-Term Management</div>
 
-      {/* HERO */}
-      <section className="hero card" aria-label="hero">
-        <div className="left">
-          <div className="muted small" style={{ marginBottom: 10 }}>
-            Short-Term Rental & Mid-Term Rental Management
+          <div>
+            <h2 className="hero-title">
+              Professional rental management with a <span>boutique hospitality feel.</span>
+            </h2>
+            <p className="lead" style={{ maxWidth: 720, margin: "18px 0 0" }}>
+              DefStar Management helps owners present better, operate smoother, and maximize revenue
+              across Tampa Bay, St. Petersburg, and the Gulf Beaches.
+            </p>
           </div>
 
-          <h2 style={{ marginTop: 0 }}>
-            Hospitality-first management for Tampa Bay hosts
-          </h2>
-
-          <p className="muted">
-            We maximize revenue and protect your asset with guest-first service, dynamic pricing,
-            and reliable local operations. Book direct or request a free owner revenue estimate.
-          </p>
-
-          <div className="hero-cta">
-            <a className="btn btn-primary" href="/revenue-estimate">
+          <div className="btn-row">
+            <Link href="/revenue-estimate" className="btn btn-primary">
               Get Free Revenue Estimate
-            </a>
-            <a className="btn btn-ghost" href="/properties">
+            </Link>
+            <Link href="/owners" className="btn btn-secondary">
+              Explore Owner Services
+            </Link>
+            <Link href="/properties" className="btn btn-ghost">
               View Properties
-            </a>
-            <a
-              className="btn"
-              href="/owners"
-              style={{ border: "1px solid rgba(15,23,32,0.06)" }}
-            >
-              Owner Services
-            </a>
+            </Link>
           </div>
 
-          <div style={{ marginTop: 18 }} className="muted small">
-            <strong>Local team • Guest-first • 24/7 messaging</strong>
+          <div className="hero-stats">
+            <div className="stat-chip">
+              <strong>24/7</strong>
+              <span className="small muted">Guest communication coverage</span>
+            </div>
+            <div className="stat-chip">
+              <strong>Local</strong>
+              <span className="small muted">Tampa Bay market knowledge</span>
+            </div>
+            <div className="stat-chip">
+              <strong>Owner-first</strong>
+              <span className="small muted">Clear reporting and cleaner operations</span>
+            </div>
           </div>
         </div>
 
-        <div className="image">
-          <img
-            src="/images/hero-warm.jpg"
-            alt="Cozy rental interior"
+        <div className="hero-visual">
+          <img src="/images/hero-warm.jpg" alt="Beautifully designed vacation rental interior" />
+
+          <div className="hero-floating-card">
+            <p className="small muted" style={{ marginBottom: 8 }}>
+              Designed for owners who want more than just basic management
+            </p>
+            <h3 style={{ fontSize: "1.25rem", marginBottom: 10 }}>
+              Sharper presentation. Better guest experience. Stronger revenue potential.
+            </h3>
+            <p className="small muted">Local execution with a polished, upscale look and feel.</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="section-heading">
+          <div>
+            <div className="eyebrow">Featured rentals</div>
+            <h2 className="section-title" style={{ marginTop: 16 }}>
+              A cleaner, more premium guest presentation.
+            </h2>
+          </div>
+          <Link href="/properties" className="btn btn-secondary">
+            View all properties
+          </Link>
+        </div>
+        <FeaturedProperties />
+      </section>
+
+      <section className="section">
+        <div>
+          <div className="eyebrow">Management services</div>
+          <h2 className="section-title" style={{ marginTop: 16 }}>
+            Built to make ownership feel simple.
+          </h2>
+          <p className="section-copy" style={{ marginTop: 12 }}>
+            We keep the presentation elevated, the communication responsive, and the operations organized.
+          </p>
+        </div>
+
+        <div className="grid grid-3">
+          {services.map((service) => (
+            <article key={service.title} className="card service-card">
+              <div className="icon-badge" aria-hidden="true">
+                {service.icon}
+              </div>
+              <h3>{service.title}</h3>
+              <p className="lead">{service.copy}</p>
+              <p className="small kicker" style={{ marginTop: 16 }}>
+                {service.note}
+              </p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="highlight-grid">
+        <div className="card card-dark">
+          <div
+            className="eyebrow"
             style={{
-              width: "100%",
-              height: "100%",
-              display: "block",
-              objectFit: "cover",
+              background: "rgba(255,255,255,0.12)",
+              color: "#eef7fb",
+              borderColor: "rgba(255,255,255,0.12)",
             }}
-          />
+          >
+            Why owners choose us
+          </div>
+          <h2 className="section-title" style={{ marginTop: 18 }}>
+            We blend polished brand presentation with hands-on local execution.
+          </h2>
+          <p className="section-copy" style={{ marginTop: 14 }}>
+            That combination helps owners stand out online while keeping the day-to-day operation dependable.
+          </p>
+        </div>
+
+        <div className="card">
+          <div className="highlight-list">
+            {reasons.map((reason) => (
+              <div key={reason} className="highlight-item">
+                <div className="check-badge">✓</div>
+                <div>
+                  <strong>{reason}</strong>
+                  <div className="small muted">
+                    Structured, polished, and aligned with stronger guest trust.
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* FEATURED PROPERTIES */}
-      <section className="card" aria-label="featured properties">
-        <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "baseline", flexWrap: "wrap" }}>
-          <h3 className="section-title" style={{ margin: 0 }}>Featured Properties</h3>
-          <a className="btn btn-ghost" href="/properties">View all →</a>
+      <section className="section">
+        <div>
+          <div className="eyebrow">How it works</div>
+          <h2 className="section-title" style={{ marginTop: 16 }}>
+            A simple process with a premium feel.
+          </h2>
         </div>
-
-        <div style={{ marginTop: 12 }}>
-          <FeaturedProperties />
-        </div>
-      </section>
-
-      {/* SERVICES + PRICING */}
-      <section className="card" aria-label="services">
-        <h3 className="section-title">Full-Service Management</h3>
 
         <div className="grid grid-3">
-          <div className="card">
-            <h4 style={{ marginTop: 0 }}>STR Management</h4>
-            <p className="muted small">
-              For 1–30 night stays: listing optimization, pricing, guest comms, cleaning coordination,
-              inspections, and maintenance coordination.
-            </p>
-            <div className="muted small">
-              <strong>20% of revenue</strong>
-              <div>Cleaning & maintenance billed separately</div>
-            </div>
-          </div>
-
-          <div className="card">
-            <h4 style={{ marginTop: 0 }}>Mid-Term Management</h4>
-            <p className="muted small">
-              For 30+ day stays: marketing, leasing support, tenant communication,
-              cleaning coordination, and maintenance coordination.
-            </p>
-            <div className="muted small">
-              <strong>10% of revenue</strong>
-              <div>Cleaning & maintenance billed separately</div>
-            </div>
-          </div>
-
-          <div className="card">
-            <h4 style={{ marginTop: 0 }}>Owner-First Reporting</h4>
-            <p className="muted small">
-              Clear statements, itemized expenses, and strategy updates focused on revenue,
-              reviews, and long-term asset care.
-            </p>
-            <a className="btn btn-ghost" href="/owners">See how it works →</a>
-          </div>
+          {process.map((step, index) => (
+            <article key={step.title} className="card process-card">
+              <div className="icon-badge" aria-hidden="true">
+                0{index + 1}
+              </div>
+              <h3>{step.title}</h3>
+              <p className="lead">{step.copy}</p>
+            </article>
+          ))}
         </div>
       </section>
 
-      {/* HOW IT WORKS */}
-      <section className="card" aria-label="how it works">
-        <h3 className="section-title">How It Works</h3>
-
-        <div className="grid grid-3">
-          <div className="card">
-            <h4 style={{ marginTop: 0 }}>1) Setup & Strategy</h4>
-            <p className="muted small">
-              We review your property, recommend upgrades, and build a pricing + positioning plan.
-            </p>
-          </div>
-          <div className="card">
-            <h4 style={{ marginTop: 0 }}>2) Launch & Operate</h4>
-            <p className="muted small">
-              We manage listings, messaging, turnovers, and issue resolution with local partners.
-            </p>
-          </div>
-          <div className="card">
-            <h4 style={{ marginTop: 0 }}>3) Optimize Monthly</h4>
-            <p className="muted small">
-              We track revenue and reviews, adjust pricing, and keep the home guest-ready.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* TRUST POINTS */}
-      <section className="card" aria-label="trust points">
-        <h3 className="section-title">Why owners choose DefStar</h3>
-
-        <div className="grid grid-3">
-          <div className="card">
-            <h4 style={{ marginTop: 0 }}>Transparent fees</h4>
-            <p className="muted small">
-              No hidden costs. Cleaning & maintenance billed separately and fully itemized.
-            </p>
-          </div>
-          <div className="card">
-            <h4 style={{ marginTop: 0 }}>Local operations</h4>
-            <p className="muted small">
-              We live and work in Tampa Bay — quick turnarounds, trusted contractors, and walkthroughs.
-            </p>
-          </div>
-          <div className="card">
-            <h4 style={{ marginTop: 0 }}>Guest-first support</h4>
-            <p className="muted small">
-              Rapid response, professional hospitality standards, and review-focused service.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA (your existing component) */}
       <CTA />
-        
-      {/* FOOTER */}
-      <Footer />
     </div>
   );
 }
-
