@@ -3,35 +3,33 @@ export default function PropertyCard({ property }) {
 
   return (
     <article className="card property-card">
-      <div className="property-image-wrap">
-        <div className="property-badge-row">
-          <span className="property-badge">Featured stay</span>
-          <span className="property-badge">{nightsMin}+ nights</span>
-        </div>
+      <div className="property-thumb-wrap">
+        <div className="property-badge">{nightsMin}+ nights</div>
         <img src={image} alt={name} />
       </div>
 
       <div className="property-body">
         <div>
-          <h3 className="property-title">{name}</h3>
-          <p className="small muted" style={{ margin: "8px 0 0" }}>
+          <h3 style={{ margin: 0, fontSize: "1.25rem", letterSpacing: "-0.03em" }}>{name}</h3>
+          <div className="muted small" style={{ marginTop: 8 }}>
             {location}
-          </p>
+          </div>
         </div>
 
-        <div className="feature-list">
+        <div className="feature-pill-row">
           <span className="feature-pill">{guests} guests</span>
-          <span className="feature-pill">Professionally managed</span>
-          <span className="feature-pill">Direct inquiry available</span>
+          <span className="feature-pill">Direct inquiry</span>
+          <span className="feature-pill">Managed by DefStar</span>
         </div>
 
         <div className="property-meta">
           <div className="small muted">
             Ideal for beach trips, relocations, and extended stays.
           </div>
-          <div className="price-note">
-            <strong>${priceFrom}</strong>
-            <span className="small muted">from / night</span>
+
+          <div style={{ textAlign: "right" }}>
+            <div style={{ fontWeight: 800, fontSize: "1.3rem" }}>${priceFrom}</div>
+            <div className="small muted">from / night</div>
           </div>
         </div>
 
